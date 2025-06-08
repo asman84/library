@@ -1,0 +1,50 @@
+services:
+  web:
+    container_name: ${DOCKER_WEB_CONTAINER_NAME}
+    build:
+      context: ../
+      dockerfile: infra/Dockerfile
+    volumes:
+      - ${DOCKER_WEB_LOG_FOLDER}:/home/app/logs/
+      - ${DOCKER_DJANGO_STATICFILES}:/app/staticfiles/
+      - ${DOCKER_DJANGO_MEDIA}:/app/media/
+    command: bash infra/start.sh
+    networks:
+      - traefik
+    ports:
+      - ${DOCKER_WEB_EXTERNAL_PORT}:8000
+    tty: true
+    restart: on-failure
+    depends_on:
+      - db
+    env_file:
+      - .env
+    environment:
+      DB_NAME: ${DOCKER_DB_NAME}
+
+  db:
+    container_name: ${DOCKER_DB_CONTAINER_NAME}
+    image: postgres:17-alpine
+    restart: always
+    networks:
+      - traefik
+    volumes:
+      - ${POSTGRES_DB_DATA}:/var/lib/postgresql/data
+      - ./init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+    env_file:
+      - .env
+    environment:
+      PGDATA: ${PGDATA}
+      POSTGRES_DB: ${DOCKER_DB_NAME}
+      POSTGRES_USER: ${DOCKER_DB_USER}
+      POSTGRES_PASSWORD: ${DOCKER_DB_PASSWORD}
+    ports:
+      - ${POSTGRES_PORTS}
+
+volumes:
+  project-db-data:
+
+networks:
+  traefik:
+    external: true
+    name: traefik
