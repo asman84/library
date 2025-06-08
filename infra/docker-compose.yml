@@ -6,7 +6,7 @@ services:
       dockerfile: infra/Dockerfile
     volumes:
       - ${DOCKER_WEB_LOG_FOLDER}:/home/app/logs/
-      - ${DOCKER_DJANGO_STATICFILES}:/app/staticfiles/
+      - ./staticfiles:/app/staticfiles
       - ${DOCKER_DJANGO_MEDIA}:/app/media/
     command: bash infra/start.sh
     networks:
