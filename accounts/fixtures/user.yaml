@@ -1,0 +1,14 @@
+-
+    model: "accounts.User"
+    pk: 1
+    fields:
+        email: "angelina@gmail.com"
+        username: "admin"
+        first_name: "Angelina"
+        last_name: "Jolie"
+        groups: [[admin]]
+        is_staff: true
+        is_superuser: true
+        verified_at: "2018-01-01 00:00:00+00:00"
+        password: "pbkdf2_sha256$120000$Q3ICPM6omVjp$liGZrVdJWPLpkne0vjBLnJr4S+v49AoVABreMeAwNBU="
+

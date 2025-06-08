@@ -1,0 +1,16 @@
+
+-
+    model: "library.Author"
+    pk: 1
+    fields:
+        first_name: "Anton"
+        last_name: "Hermes"
+        middle_name: "Dado"
+
+-
+    model: "library.Author"
+    pk: 2
+    fields:
+        first_name: "Tomas"
+        last_name: "Edison"
+        middle_name: "Johnatan"

@@ -1,0 +1,33 @@
+-
+    model: "library.Book"
+    pk: 1
+    fields:
+        title: "Book1"
+        isbn: "1234"
+        is_available: true
+        author: 1
+        page_count: 1
+
+-
+    model: "library.Book"
+    pk: 2
+    fields:
+        title: "Book2"
+        isbn: "1235"
+        is_available: true
+        author: 1
+        page_count: 2
+
+-
+    model: "library.Book"
+    pk: 3
+    fields:
+        title: "Book3"
+        isbn: "1236"
+        is_available: true
+        author: 2
+        page_count: 3
+
+
+
+
