@@ -42,7 +42,9 @@ services:
       - ${POSTGRES_PORTS}
 
 volumes:
+  static_volume:
   project-db-data:
+
 
 networks:
   traefik:
